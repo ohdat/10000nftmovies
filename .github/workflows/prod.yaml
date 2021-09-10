@@ -1,51 +1,11 @@
 name: prod
 
-env:
-  DOCKER_TAG: 1.1.${{ github.run_id }}
-  APP_NAME: ${{ github.event.repository.name }}
-  TAG: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:1.1.${{ github.run_id }}
-  LATEST_TAG: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:latest
-  REPO: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}
-  NODE_VERSION: '14' 
-
 on:
   push:
     branches:
       - 'master'
 
 jobs:
-
-  buildAndPush:
-
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ env.NODE_VERSION }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ env.NODE_VERSION }}
-        #cache: 'yarn'
-    - name: npm install, build, and test
-      run: |
-        # Build and test the project, then
-        # deploy to Azure Web App.
-        #yarn install
-        #yarn stage
-         npm install
-         npm run build
-        # npm run test --if-present
-    - name: Login to DockerHub
-      uses: docker/login-action@v1
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
-    - name: Docker build & Push DockerHub
-      run: |
-          docker build . --cache-from=${{ env.LATEST_TAG }} --file Dockerfile --tag ${{ env.TAG }}
-          docker tag ${{ env.TAG }} ${{ env.LATEST_TAG }}
-          docker push ${{ env.TAG }}
-          docker push ${{ env.LATEST_TAG }}
-          echo ${{ env.TAG }}
   deploy:
     needs: buildAndPush
     runs-on: ubuntu-latest
@@ -64,7 +24,4 @@ jobs:
         uses: ohdat/helm-eks-action@master
         with:
           command: |
-            helm repo add ohdat https://ohdat.github.io/helm-charts/
-            helm repo update
-            aws eks update-kubeconfig --region us-east-1 --name ohdat-eks
-            helm upgrade -i ${{ env.APP_NAME }} ohdat/website -n ohdat --wait --set image.repository=$${{ env.REPO }} --set image.tag=${{ env.DOCKER_TAG }} --set "gateway.hosts[0]=${{ env.APP_NAME }}.ohdat.io"
+            aws s3 cp . s3://10000nftmovies/ --region us-east-1 --recursive
