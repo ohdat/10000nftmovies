@@ -31,10 +31,10 @@ const FaqSection = (props) => {
     setHidden(!hidden);
   };
   return (
-    <div className="faq-ele">
+    <div className="faq-ele" onClick={() => toggle()}>
       <div className="faq-title">
         <div className="title-txt">{title}</div>
-        <div className="drop-btn" onClick={() => toggle()}>
+        <div className="drop-btn">
           <img src={require('../../assets/images/dropDown.png')} />
         </div>
       </div>

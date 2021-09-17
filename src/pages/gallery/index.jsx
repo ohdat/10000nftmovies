@@ -7,7 +7,7 @@ const GalleryPage = () => {
       <div className="page-content">
         <div className="openSea-btn">
           <a
-            href="https://opensea.io/collection/moviesaboutsam"
+            href="https://opensea.io/collection/10000moviesaboutsam"
             target="_blank"
           >
             Go to OpenSea
