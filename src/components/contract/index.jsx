@@ -14,7 +14,10 @@ const ContarctComponent = () => {
               Join our Discord
             </a>
             <div className="contract-txt">
-              <a href="https://etherscan.io/address/0xF53244C6F4C5eA713948d27FdF640f989966B9fF">
+              <a
+                href="https://etherscan.io/address/0xF53244C6F4C5eA713948d27FdF640f989966B9fF"
+                target="_blank"
+              >
                 Smart Contract{' '}
               </a>
             </div>
