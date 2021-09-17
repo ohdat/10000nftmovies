@@ -8,7 +8,7 @@ const SpecComponent = () => {
           <h1>10000 MOVIES ABOUT SAM.</h1>
         </div>
         <div className="spec-btn">
-          <div className="btn-text">COMMING SOON</div>
+          <div className="btn-text">COMING SOON</div>
         </div>
         <div className="spec-text spec-intro">
           <p>Whitelist: 7am EST 24st Sept. 0.03ETH each</p>
