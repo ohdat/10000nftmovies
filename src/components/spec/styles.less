@@ -1,0 +1,119 @@
+.spec-wrapper {
+  position: relative;
+  .spec-container {
+    .spec-head {
+      margin-top: 60px;
+      margin-bottom: 56px;
+      text-align: center;
+      h1 {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 72px;
+        line-height: 96px;
+        letter-spacing: -0.02em;
+        text-decoration-line: underline;
+        color: #000000;
+      }
+    }
+    .spec-btn {
+      height: 72px;
+      width: 315px;
+      line-height: 72px;
+      margin: 0 auto;
+      background-color: #000;
+      text-align: center;
+      margin-bottom: 20px;
+      .btn-text {
+        font-weight: bold;
+        font-size: 40px;
+        color: #fff;
+      }
+    }
+    .spec-text {
+      font-size: 24px;
+      line-height: 32px;
+    }
+    .spec-intro {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .info-text {
+      border: 1px solid #000;
+      padding: 2%;
+      position: relative;
+      font-style: italic;
+      .location-footer {
+        height: 32px;
+        width: 100%;
+        margin-top: 30px;
+        p {
+          float: right;
+        }
+      }
+    }
+    .welcome-text {
+      margin-top: 60px;
+      .welcome-header {
+        height: 90px;
+        line-height: 90px;
+      }
+      p strong {
+        border-bottom: 2px solid #000;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .spec-wrapper {
+    .spec-container {
+      .spec-head {
+        margin-top: 30px;
+        margin-bottom: 28px;
+        text-align: center;
+        h1 {
+          font-size: 36px;
+          line-height: 48px;
+        }
+      }
+      .spec-btn {
+        height: 36px;
+        width: 173px;
+        line-height: 36px;
+        .btn-text {
+          font-size: 20px;
+        }
+      }
+      .spec-text {
+        font-size: 14px;
+        line-height: 18px;
+      }
+      .spec-intro {
+        text-align: center;
+        margin-bottom: 15px;
+      }
+
+      .info-text {
+        .location-footer {
+          height: 16px;
+          width: 100%;
+          margin-top: 15px;
+          p {
+            float: right;
+          }
+        }
+      }
+      .welcome-text {
+        margin-top: 30px;
+        .welcome-header {
+          height: 45px;
+          line-height: 45px;
+        }
+        p strong {
+          border-bottom: 1px solid #000;
+        }
+      }
+    }
+  }
+}
