@@ -42,8 +42,26 @@ const navArray = [
   // },
   {
     navkey: 'Gallery',
-    test: '/#gallery',
+    test: '/gallery',
     key: 'gallery',
+  },
+];
+
+const relateWebData = [
+  {
+    link: 'https://twitter.com/moviesaboutsam',
+    imgUrl: require('../../assets/images/Vector.png'),
+    key: 'twitter',
+  },
+  {
+    link: 'https://opensea.io/collection/10000moviesaboutsam',
+    imgUrl: require('../../assets/images/OpenSea.png'),
+    key: 'opeanSea',
+  },
+  {
+    link: 'https://discord.gg/x9T2ydMQ6Z',
+    imgUrl: require('../../assets/images/DiscordLogo.png'),
+    key: 'discord',
   },
 ];
 
@@ -97,16 +115,13 @@ const Header = () => {
         </div>
       )}
       <div className="header-right account-box">
-        <div className="relateWeb-item">
-          <a href="https://twitter.com/moviesaboutsam">
-            <img src={require('../../assets/images/Vector.png')} alt="" />
-          </a>
-        </div>
-        <div className="relateWeb-item">
-          <a href="https://discord.gg/x9T2ydMQ6Z">
-            <img src={require('../../assets/images/DiscordLogo.png')} alt="" />
-          </a>
-        </div>
+        {relateWebData.map((item) => (
+          <div className="relateWeb-item" key={item.key}>
+            <a href={item.link} target="_blank">
+              <img src={item.imgUrl} alt="" />
+            </a>
+          </div>
+        ))}
       </div>
     </div>
   );
