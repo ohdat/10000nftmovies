@@ -3,23 +3,23 @@ import './styles.less';
 
 const roadmapData = [
   {
-    desc: '10000 Sam Movie titles dropped.',
+    desc: '110,000 Movies about Sam will be minted at 0.02ETH. ',
     key: '1',
   },
   {
-    desc: 'Community vote for the first Sam movie to go into production.',
+    desc: '10 additional Movies about Sam NFT’s will be airdropped to the biggest creative contributors in the Discord.',
     key: '2',
   },
   {
-    desc: 'Production roadmap of the first Sam movie announced.',
+    desc: 'We will work with the community to produce taglines, posters, characters and scripts of the film titles. ',
     key: '3',
   },
   {
-    desc: 'First Sam movie released in cinema! ',
+    desc: 'FThe community will begin voting on which movie should go into production. ',
     key: '4',
   },
   {
-    desc: 'Continue to be part of the community to grow the Samverse.',
+    desc: 'We will produce a 3 minute short film of the chosen movie, with the potential for the film to be adapted into a feature length movie.',
     key: '5',
   },
 ];
