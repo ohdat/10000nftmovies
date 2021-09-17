@@ -1,0 +1,120 @@
+.header-wrapper {
+  color: #000;
+  width: 1200px;
+  margin: 0 auto;
+  background-color: #fff;
+  // position: relative;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  .header-left {
+    .logo {
+      display: inline-block;
+    }
+  }
+  .header-right {
+    display: flex;
+    .relateWeb-item {
+      height: 48px;
+      width: 48px;
+      margin-right: 20px;
+      a img {
+        width: 100%;
+      }
+    }
+  }
+  .nav-wrapper {
+    display: inline-block;
+    .nav-box {
+      display: block;
+      .nav-item {
+        display: inline-block;
+        padding: 0 16px;
+        font-family: Courier New;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 24px;
+        letter-spacing: -0.02em;
+        text-align: left;
+        a {
+          color: #000;
+        }
+      }
+    }
+  }
+  .mobile-icon {
+    display: none;
+  }
+  .mobile-list {
+    display: none;
+  }
+}
+
+.ant-layout-header {
+  height: 100px;
+  padding: 0 50px;
+  color: #000;
+  line-height: 100px;
+  background: #fff;
+}
+
+@media screen and (max-width: 576px) {
+  .ant-layout-header {
+    height: 60px;
+    padding: 0;
+    line-height: 60px;
+  }
+  .header-wrapper {
+    .header-left {
+      display: flex;
+      align-items: center;
+      padding-left: 12px;
+      .logo {
+        height: 40px;
+        width: 40px;
+      }
+      .nav-wrapper {
+        display: none;
+      }
+      .mobile-icon {
+        display: inline-block;
+        font-family: Courier New;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 60px;
+        letter-spacing: -0.02em;
+        text-align: left;
+        margin-left: 12px;
+        cursor: pointer;
+      }
+    }
+    .header-right {
+      display: flex;
+      .relateWeb-item {
+        height: 30px;
+        width: 30px;
+        margin-right: 10px;
+      }
+    }
+    .mobile-list {
+      display: block;
+      position: fixed;
+      background-color: #fff;
+      width: 100%;
+      top: 60px;
+      padding: 0 64px;
+      z-index: 100;
+      .mobile-item {
+        a {
+          color: #000;
+          font-size: 24px;
+          font-weight: normal;
+          font-family: Courier New;
+          letter-spacing: -0.02em;
+        }
+      }
+    }
+  }
+}
