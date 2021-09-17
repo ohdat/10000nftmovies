@@ -11,8 +11,8 @@ const SpecComponent = () => {
           <div className="btn-text">COMING SOON</div>
         </div>
         <div className="spec-text spec-intro">
-          <p>Whitelist: 7am EST 24st Sept. 0.03ETH each</p>
-          <p>General Entry: 9am EST 24st Sept. 0.03ETH each</p>
+          <p>Whitelist: 7am EST 24th Sept. 0.02ETH each</p>
+          <p>General Entry: 9am EST 24th Sept. 0.02ETH each</p>
         </div>
         <div className="spec-text info-text">
           <p>
@@ -30,6 +30,29 @@ const SpecComponent = () => {
         <div className="spec-text welcome-text">
           <p className="welcome-header">Welcome to Samverse!</p>
           <p>
+            10,000 Movies About Sam is an NFT project from the creative minds
+            behind the award winning animated feature Next-Gen.
+          </p>
+          <p>
+            10,000 Movies About Sam is an NFT project from the creative minds
+            behind the award winning animated feature Next-Gen.
+          </p>
+          <p>
+            We are releasing 10,000 randomly generated movie titles in search
+            for our next big project.
+          </p>
+          <p>
+            Minting one of the movie titles will give you the opportunity to
+            create your own cinematic universe around the title. From the
+            plotline, characters, poster and script - this is a creative
+            endeavor with endless opportunities.
+          </p>
+          <p>
+            The community will then vote on which title adaption we should turn
+            into a short film, which will be entered into film festivals across
+            the world.
+          </p>
+          <p>
             Each movie title has been procedurally generated from a word bank of
             2173 words and phrases. Scripts, visuals, sounds, and even{' '}
             <strong>Sam</strong> are intentionally left blank for the community
@@ -38,6 +61,15 @@ const SpecComponent = () => {
             up to the community how far this project can grow from here. Come
             join the community in fleshing out the Samverse!
           </p>
+        </div>
+        <div className="join-btn">
+          <a
+            className="contract-btn"
+            href="https://discord.gg/x9T2ydMQ6Z"
+            target="_blank"
+          >
+            Join our Discord
+          </a>
         </div>
       </div>
     </div>
