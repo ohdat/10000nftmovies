@@ -11,6 +11,7 @@ export default defineConfig({
   dva: {
     hmr: true,
   },
+  favicon: 'favicon.ico',
   routes,
   title: '10000 Movies about Sam. | 10,000 MOVIES ABOUT SAM. literally.',
 });

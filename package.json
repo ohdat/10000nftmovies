@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "start": "umi dev",
-    "build": "umi build && mkdir -p dist/gallery && cp dist/index.html dist/gallery",
+    "build": "umi build && cp src/assets/favicon.ico dist/ && mkdir -p dist/gallery && cp dist/index.html dist/gallery",
     "postinstall": "umi generate tmp",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
     "test": "umi-test",
