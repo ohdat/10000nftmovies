@@ -55,7 +55,7 @@ const relateWebData = [
   },
   {
     link: 'https://opensea.io/collection/10000moviesaboutsam',
-    imgUrl: require('../../assets/images/OpenSea.png'),
+    imgUrl: require('../../assets/images/Opensea.png'),
     key: 'opeanSea',
   },
   {
