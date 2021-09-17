@@ -69,6 +69,15 @@ const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const handleShowMobileMenu = () => {
     setShowMobileMenu(!showMobileMenu);
+    if (!showMobileMenu) {
+      document.addEventListener('click', () => setShowMobileMenu(false), false);
+      document.addEventListener('tap', () => setShowMobileMenu(false), false);
+      document.addEventListener(
+        'mousewheel',
+        () => setShowMobileMenu(false),
+        false,
+      );
+    }
   };
   const handleScroll = (id) => {
     setShowMobileMenu(false);
