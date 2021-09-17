@@ -18,7 +18,9 @@ const GalleryPage = () => {
           {boxArray.map((item) => (
             <div className="gallery-ele" key={item}>
               <div className="ele-img">
-                <img src={`https://bitex.cat/nft/${item + 1}.png`} />
+                <img
+                  src={`https://10000moviesaboutsam.com/nft/${item + 1}.png`}
+                />
               </div>
               <div className="ele-txt">Script&nbsp;&nbsp;#???</div>
             </div>

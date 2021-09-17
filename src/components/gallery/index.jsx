@@ -8,22 +8,22 @@ const GalleryComponent = () => {
         <div className="wrapper-title">NFT Examples:</div>
         <div className="gallery-list">
           <div className="img-item">
-            <img src={require('../../assets/images/gallery/1-2.png')} />
+            <img src={require('../../assets/images/gallery/1-1.png')} />
           </div>
           <div className="img-item">
-            <img src={require('../../assets/images/gallery/1-6.png')} />
+            <img src={require('../../assets/images/gallery/2-3.png')} />
           </div>
           <div className="img-item">
-            <img src={require('../../assets/images/gallery/2-12.png')} />
+            <img src={require('../../assets/images/gallery/2-14.png')} />
           </div>
           <div className="img-item">
-            <img src={require('../../assets/images/gallery/2-17.png')} />
+            <img src={require('../../assets/images/gallery/2-5.png')} />
           </div>
           <div className="img-item">
-            <img src={require('../../assets/images/gallery/2-18.png')} />
+            <img src={require('../../assets/images/gallery/2-29.png')} />
           </div>
           <div className="img-item">
-            <img src={require('../../assets/images/gallery/4-2.png')} />
+            <img src={require('../../assets/images/gallery/2-32.png')} />
           </div>
         </div>
         <div className="gallery-footer">
