@@ -10,8 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: echo AWS_ACCESS_KEY_1ID ${{ env.aws.AWS_ACCESS_KEY_ID }}
-      - run: echo AWS_ACCESS_KEY_ID ${{ secrets.aws.AWS_ACCESS_KEY_ID }}
       - name: AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -19,8 +17,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      - name: helm deploy
-        uses: ohdat/helm-eks-action@master
-        with:
-          command: |
-            aws s3 cp ./dist/ s3://10000nftmovies/ --region us-east-1 --recursive
+      - name: deploy
+        run: |
+          aws s3 cp ./dist/ s3://10000nftmovies/ --region us-east-1 --recursive
