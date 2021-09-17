@@ -3,7 +3,7 @@ import './styles.less';
 
 const roadmapData = [
   {
-    desc: '110,000 Movies about Sam will be minted at 0.02ETH. ',
+    desc: '10,000 Movies about Sam will be minted at 0.02ETH.',
     key: '1',
   },
   {
@@ -15,7 +15,7 @@ const roadmapData = [
     key: '3',
   },
   {
-    desc: 'FThe community will begin voting on which movie should go into production. ',
+    desc: 'The community will begin voting on which movie should go into production. ',
     key: '4',
   },
   {
@@ -32,7 +32,7 @@ const RoadMapComponent = () => {
         <div className="wrapper-content">
           {roadmapData.map((item) => (
             <div key={item.key} className="road-ele">
-              <span>{item.key}.</span>
+              <span>{item.key}.</span>&nbsp;
               <span>{item.desc}</span>
             </div>
           ))}

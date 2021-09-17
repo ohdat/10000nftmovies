@@ -31,11 +31,13 @@ const SpecComponent = () => {
           <p className="welcome-header">Welcome to Samverse!</p>
           <p>
             10,000 Movies About Sam is an NFT project from the creative minds
-            behind the award winning animated feature Next-Gen.
-          </p>
-          <p>
-            10,000 Movies About Sam is an NFT project from the creative minds
-            behind the award winning animated feature Next-Gen.
+            behind the award winning animated feature{' '}
+            <a
+              href="https://www.youtube.com/watch?v=uf3ALGKgpGU"
+              target="_blank"
+            >
+              Next-Gen.
+            </a>
           </p>
           <p>
             We are releasing 10,000 randomly generated movie titles in search
