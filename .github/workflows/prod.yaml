@@ -23,4 +23,4 @@ jobs:
         uses: ohdat/helm-eks-action@master
         with:
           command: |
-            aws s3 cp . s3://10000nftmovies/ --region us-east-1 --recursive
+            aws s3 cp ./dist/ s3://10000nftmovies/ --region us-east-1 --recursive
