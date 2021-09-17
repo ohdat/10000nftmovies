@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import $ from 'jquery';
 import 'jquery.scrollto';
 import './styles.less';
-
 const navArray = [
   {
     navkey: 'Spec',
@@ -82,8 +81,10 @@ const Header = () => {
   };
   const handleScroll = (e, id) => {
     setShowMobileMenu(false);
-    e.preventDefault();
-    $.scrollTo(`.${id}-wrapper`, { offset: { top: -100 }, duration: 800 });
+    if (location.pathname == '/') {
+      e.preventDefault();
+      $.scrollTo(`.${id}-wrapper`, { offset: { top: -100 }, duration: 800 });
+    }
   };
   return (
     <div className="header-wrapper flex-box">

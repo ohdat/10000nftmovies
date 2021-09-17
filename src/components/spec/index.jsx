@@ -2,7 +2,7 @@ import './styles.less';
 
 const SpecComponent = () => {
   return (
-    <div className="spec-wrapper">
+    <div className="spec-wrapper" id="spec">
       <div className="spec-container box-content">
         <div className="spec-head">
           <h1>10000 MOVIES ABOUT SAM.</h1>
@@ -28,7 +28,7 @@ const SpecComponent = () => {
           </div>
         </div>
         <div className="spec-text welcome-text">
-          <p className="welcome-header">Welcome to Samverse!</p>
+          <p className="welcome-header">Welcome to the Samverse!</p>
           <p>
             10,000 Movies About Sam is an NFT project from the creative minds
             behind the award winning animated feature{' '}

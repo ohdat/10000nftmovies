@@ -2,7 +2,7 @@ import './styles.less';
 
 const InitiatorsComponent = () => {
   return (
-    <div className="initiators-wrapper">
+    <div className="initiators-wrapper" id="initiators">
       <div className="initiators-box box-content">
         <div className="wrapper-title">INITIATORS</div>
         <div className="wrapper-content">

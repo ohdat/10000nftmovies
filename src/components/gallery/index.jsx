@@ -27,9 +27,9 @@ const GalleryComponent = () => {
           </div>
         </div>
         <div className="gallery-footer">
-          <NavLink className="gallery-link" to="/gallery">
+          <a className="gallery-link" href="/gallery">
             More Movies about Sam.
-          </NavLink>
+          </a>
         </div>
       </div>
     </div>

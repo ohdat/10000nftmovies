@@ -26,7 +26,7 @@ const roadmapData = [
 
 const RoadMapComponent = () => {
   return (
-    <div className="roadmap-wrapper">
+    <div className="roadmap-wrapper" id="roadmap">
       <div className="roadmap-box box-content">
         <div className="wrapper-title">ROADMAP</div>
         <div className="wrapper-content">

@@ -49,7 +49,7 @@ const FaqSection = (props) => {
 
 const FaqComponent = () => {
   return (
-    <div className="faq-wrapper">
+    <div className="faq-wrapper" id="faq">
       <div className="faq-box box-content">
         <div className="wrapper-title">FAQ</div>
         <div className="wrapper-content">
