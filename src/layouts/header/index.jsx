@@ -1,7 +1,7 @@
 import { NavLink } from 'umi';
-import { connect } from 'umi';
 import React, { useState } from 'react';
-
+import $ from 'jquery';
+import 'jquery.scrollto';
 import './styles.less';
 
 const navArray = [
@@ -47,20 +47,14 @@ const navArray = [
   },
 ];
 
-const Header = (props) => {
+const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const handleShowMobileMenu = () => {
     setShowMobileMenu(!showMobileMenu);
   };
   const handleScroll = (id) => {
     setShowMobileMenu(false);
-    const { dispatch } = props;
-    dispatch({
-      type: 'scroll/toggleNode',
-      payload: {
-        id,
-      },
-    });
+    $.scrollTo(`.${id}-wrapper`, { offset: { top: -100 }, duration: 800 });
   };
   return (
     <div className="header-wrapper flex-box">
@@ -118,4 +112,4 @@ const Header = (props) => {
   );
 };
 
-export default connect(({ scroll }) => ({ scroll }))(Header);
+export default Header;

@@ -1,5 +1,3 @@
-import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
-import { connect } from 'umi';
 import React, { useState } from 'react';
 import './styles.less';
 
@@ -49,33 +47,25 @@ const FaqSection = (props) => {
   );
 };
 
-const FaqComponent = (props) => {
-  const id = 'faq';
-  const { scroll } = props;
-  let active = false;
-  if (id === scroll) active = true;
+const FaqComponent = () => {
   return (
-    <ScrollIntoViewIfNeeded active={active}>
-      <div className="faq-wrapper">
-        <div className="faq-box box-content">
-          <div className="wrapper-title">FAQ</div>
-          <div className="wrapper-content">
-            <div className="faq-content">
-              {faqData.map((item) => (
-                <FaqSection
-                  key={item.key}
-                  desc={item.desc}
-                  title={item.title}
-                ></FaqSection>
-              ))}
-            </div>
+    <div className="faq-wrapper">
+      <div className="faq-box box-content">
+        <div className="wrapper-title">FAQ</div>
+        <div className="wrapper-content">
+          <div className="faq-content">
+            {faqData.map((item) => (
+              <FaqSection
+                key={item.key}
+                desc={item.desc}
+                title={item.title}
+              ></FaqSection>
+            ))}
           </div>
         </div>
       </div>
-    </ScrollIntoViewIfNeeded>
+    </div>
   );
 };
 
-export default connect(({ scroll }) => ({ scroll: scroll.currentNode }))(
-  FaqComponent,
-);
+export default FaqComponent;

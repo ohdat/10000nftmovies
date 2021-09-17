@@ -1,4 +1,3 @@
-import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { connect } from 'umi';
 import './styles.less';
 
@@ -25,30 +24,22 @@ const roadmapData = [
   },
 ];
 
-const RoadMapComponent = (props) => {
-  const id = 'roadmap';
-  const { scroll } = props;
-  let active = false;
-  if (id === scroll) active = true;
+const RoadMapComponent = () => {
   return (
-    <ScrollIntoViewIfNeeded active={active}>
-      <div className="roadmap-wrapper">
-        <div className="roadmap-box box-content">
-          <div className="wrapper-title">ROADMAP</div>
-          <div className="wrapper-content">
-            {roadmapData.map((item) => (
-              <div key={item.key} className="road-ele">
-                <span>{item.key}.</span>
-                <span>{item.desc}</span>
-              </div>
-            ))}
-          </div>
+    <div className="roadmap-wrapper">
+      <div className="roadmap-box box-content">
+        <div className="wrapper-title">ROADMAP</div>
+        <div className="wrapper-content">
+          {roadmapData.map((item) => (
+            <div key={item.key} className="road-ele">
+              <span>{item.key}.</span>
+              <span>{item.desc}</span>
+            </div>
+          ))}
         </div>
       </div>
-    </ScrollIntoViewIfNeeded>
+    </div>
   );
 };
 
-export default connect(({ scroll }) => ({ scroll: scroll.currentNode }))(
-  RoadMapComponent,
-);
+export default RoadMapComponent;

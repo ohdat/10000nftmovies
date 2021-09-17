@@ -1,8 +1,7 @@
 import { NavLink } from 'umi';
 import './styles.less';
 
-const GalleryComponent = (props) => {
-  const { isMobile } = props;
+const GalleryComponent = () => {
   return (
     <div className="gallery-wrapper" id="gallery">
       <div className="gallery-box box-content">
