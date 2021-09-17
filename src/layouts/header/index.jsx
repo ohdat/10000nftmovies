@@ -67,9 +67,10 @@ const relateWebData = [
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
-  const handleShowMobileMenu = () => {
+  const handleShowMobileMenu = (e) => {
     setShowMobileMenu(!showMobileMenu);
     if (!showMobileMenu) {
+      e.stopPropagation();
       document.addEventListener('click', () => setShowMobileMenu(false), false);
       document.addEventListener('tap', () => setShowMobileMenu(false), false);
       document.addEventListener(
@@ -106,7 +107,7 @@ const Header = () => {
             ))}
           </ul>
         </div>
-        <div className="mobile-icon" onClick={() => handleShowMobileMenu()}>
+        <div className="mobile-icon" onClick={(e) => handleShowMobileMenu(e)}>
           Sam.
         </div>
       </div>
