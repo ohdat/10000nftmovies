@@ -80,8 +80,9 @@ const Header = () => {
       );
     }
   };
-  const handleScroll = (id) => {
+  const handleScroll = (e, id) => {
     setShowMobileMenu(false);
+    e.preventDefault();
     $.scrollTo(`.${id}-wrapper`, { offset: { top: -100 }, duration: 800 });
   };
   return (
@@ -97,12 +98,14 @@ const Header = () => {
         <div className="nav-wrapper">
           <ul className="nav-box">
             {navArray.map((item) => (
-              <li
-                key={item.key}
-                className="nav-item"
-                onClick={() => handleScroll(item.key)}
-              >
-                <a href={item.test}>{item.navkey}</a>
+              <li key={item.key} className="nav-item">
+                <a
+                  href={item.test}
+                  key={item.key}
+                  onClick={(e) => handleScroll(e, item.key)}
+                >
+                  {item.navkey}
+                </a>
               </li>
             ))}
           </ul>
