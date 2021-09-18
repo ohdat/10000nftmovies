@@ -111,9 +111,6 @@ const Header = () => {
             ))}
           </ul>
         </div>
-        <div className="mobile-icon" onClick={(e) => handleShowMobileMenu(e)}>
-          Sam.
-        </div>
       </div>
       {showMobileMenu && (
         <div className="mobile-list">
@@ -136,6 +133,13 @@ const Header = () => {
             </a>
           </div>
         ))}
+        <div className="mobile-icon" onClick={(e) => handleShowMobileMenu(e)}>
+          {!showMobileMenu ? (
+            <img src={require('../../assets/images/union.svg')} alt="" />
+          ) : (
+            <img src={require('../../assets/images/close.svg')} alt="" />
+          )}
+        </div>
       </div>
     </div>
   );
