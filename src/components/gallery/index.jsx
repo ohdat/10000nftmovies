@@ -3,8 +3,8 @@ import './styles.less';
 
 const GalleryComponent = () => {
   return (
-    <div className="gallery-wrapper" id="gallery">
-      <div className="gallery-box box-content">
+    <div className="gallery-wrapper box-content" id="gallery">
+      <div className="gallery-box">
         <div className="wrapper-title">NFT Examples:</div>
         <div className="gallery-list">
           <div className="img-item">

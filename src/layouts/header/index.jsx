@@ -83,7 +83,7 @@ const Header = () => {
     setShowMobileMenu(false);
     if (location.pathname == '/' && id !== 'gallery') {
       // e.preventDefault();
-      $.scrollTo(`.${id}-wrapper`, { offset: { top: -100 }, duration: 800 });
+      $.scrollTo(`.${id}-wrapper`, { offset: { top: -150 }, duration: 800 });
     }
   };
   return (

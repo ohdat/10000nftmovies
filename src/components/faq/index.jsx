@@ -49,8 +49,8 @@ const FaqSection = (props) => {
 
 const FaqComponent = () => {
   return (
-    <div className="faq-wrapper" id="faq">
-      <div className="faq-box box-content">
+    <div className="faq-wrapper box-content" id="faq">
+      <div className="faq-box">
         <div className="wrapper-title">FAQ</div>
         <div className="wrapper-content">
           <div className="faq-content">

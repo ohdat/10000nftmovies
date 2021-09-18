@@ -2,8 +2,8 @@ import './styles.less';
 
 const SpecComponent = () => {
   return (
-    <div className="spec-wrapper" id="spec">
-      <div className="spec-container box-content">
+    <div className="spec-wrapper box-content" id="spec">
+      <div className="spec-container">
         <div className="spec-head">
           <h1>10000 MOVIES ABOUT SAM.</h1>
         </div>

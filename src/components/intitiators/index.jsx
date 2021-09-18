@@ -2,8 +2,8 @@ import './styles.less';
 
 const InitiatorsComponent = () => {
   return (
-    <div className="initiators-wrapper" id="initiators">
-      <div className="initiators-box box-content">
+    <div className="initiators-wrapper box-content" id="initiators">
+      <div className="initiators-box">
         <div className="wrapper-title">INITIATORS</div>
         <div className="wrapper-content">
           <p>
