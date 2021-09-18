@@ -81,7 +81,7 @@ const Header = () => {
   };
   const handleScroll = (e, id) => {
     setShowMobileMenu(false);
-    if (location.pathname == '/') {
+    if (location.pathname == '/' && id !== 'gallery') {
       e.preventDefault();
       $.scrollTo(`.${id}-wrapper`, { offset: { top: -100 }, duration: 800 });
     }
