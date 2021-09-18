@@ -28,7 +28,7 @@ const SpecComponent = () => {
           </div>
         </div>
         <div className="spec-text welcome-text">
-          <p className="welcome-header">Welcome to the Samverse!</p>
+          <p className="welcome-header">Welcome to the Samverse.</p>
           <p>
             10,000 Movies About Sam is an NFT project from the creative minds
             behind the award winning animated feature{' '}
@@ -61,7 +61,7 @@ const SpecComponent = () => {
             to create further upon. The project initiators promise to take one
             community-led short movie through to release on the big screen. It’s
             up to the community how far this project can grow from here. Come
-            join the community in fleshing out the Samverse!
+            join the community in fleshing out the Samverse.
           </p>
         </div>
         <div className="join-btn">
