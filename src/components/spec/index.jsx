@@ -55,7 +55,7 @@ const SpecComponent = () => {
             the world.
           </p>
           <p>
-            Each movie title has been procedurally generated from a same word
+            Each movie title has been procedurally generated from the same word
             bank. Scripts, visuals, sounds, and even <strong>Sam</strong> are
             intentionally left blank for the community to create further upon.
             The project initiators promise to take one community-led short movie
