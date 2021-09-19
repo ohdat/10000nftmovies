@@ -55,13 +55,13 @@ const SpecComponent = () => {
             the world.
           </p>
           <p>
-            Each movie title has been procedurally generated from a word bank of
-            2173 words and phrases. Scripts, visuals, sounds, and even{' '}
-            <strong>Sam</strong> are intentionally left blank for the community
-            to create further upon. The project initiators promise to take one
-            community-led short movie through to release on the big screen. It’s
-            up to the community how far this project can grow from here. Come
-            join the community in fleshing out the Samverse.
+            Each movie title has been procedurally generated from a same word
+            bank. Scripts, visuals, sounds, and even <strong>Sam</strong> are
+            intentionally left blank for the community to create further upon.
+            The project initiators promise to take one community-led short movie
+            through to release on the big screen. It’s up to the community how
+            far this project can grow from here. Come join the community in
+            fleshing out the Samverse.
           </p>
         </div>
         <div className="join-btn">
