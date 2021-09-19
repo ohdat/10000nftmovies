@@ -3,6 +3,7 @@ import { useScrollToTop } from 'react-router-scroll-to-top';
 
 const GalleryPage = () => {
   useScrollToTop();
+  const zeroPad = (num, places) => String(num).padStart(places, '0');
   const boxArray = Array.from({ length: 62 }, (v, i) => i);
   return (
     <div className="page-container gallery-page">
@@ -21,7 +22,10 @@ const GalleryPage = () => {
             <div className="gallery-ele" key={item}>
               <div className="ele-img">
                 <img
-                  src={`https://10000moviesaboutsam.com/nft/${item + 1}.png`}
+                  src={`https://10000moviesaboutsam.com/nft/${zeroPad(
+                    item + 1,
+                    5,
+                  )}.png`}
                 />
               </div>
               <div className="ele-txt">Script&nbsp;&nbsp;#???</div>
