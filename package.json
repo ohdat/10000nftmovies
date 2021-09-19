@@ -21,13 +21,20 @@
   },
   "dependencies": {
     "@ant-design/pro-layout": "^6.5.0",
+    "@binance-chain/bsc-connector": "^1.0.0",
+    "@web3-react/core": "^6.1.9",
+    "@web3-react/injected-connector": "^6.0.7",
+    "@web3-react/walletconnect-connector": "^6.2.4",
+    "ethereum-checksum-address": "^0.0.7",
+    "ethers": "^5.4.7",
     "jquery": "^3.6.0",
     "jquery.scrollto": "^2.1.3",
     "react": "17.x",
     "react-dom": "17.x",
     "react-router-scroll-to-top": "^1.1.2",
     "react-scroll-into-view-if-needed": "^3.0.1",
-    "umi": "^3.5.18"
+    "umi": "^3.5.18",
+    "unstated-next": "^1.1.0"
   },
   "devDependencies": {
     "@types/react": "^17.0.0",

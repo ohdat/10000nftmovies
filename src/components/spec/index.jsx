@@ -1,6 +1,18 @@
+import { Web3ReactProvider } from '@web3-react/core';
+import React, { useState } from 'react';
+import PurchaseModal from './purchaseModal';
 import './styles.less';
 
 const SpecComponent = () => {
+  const [showPurchaseModal, setShowPurchaseModal] = useState(false);
+
+  const handleShowPurchaseModal = () => {
+    setShowPurchaseModal(true);
+  };
+  const handleClosePurchaseModal = () => {
+    setShowPurchaseModal(false);
+  };
+
   return (
     <div className="spec-wrapper box-content" id="spec">
       <div className="spec-container">
@@ -8,7 +20,9 @@ const SpecComponent = () => {
           <h1>10000 MOVIES ABOUT SAM.</h1>
         </div>
         <div className="spec-btn">
-          <div className="btn-text">COMING SOON</div>
+          <div className="btn-text" onClick={() => handleShowPurchaseModal()}>
+            MINT NOW
+          </div>
         </div>
         <div className="spec-text spec-intro">
           <p>Whitelist: 7am EST 24th Sept. 0.02ETH each</p>
@@ -74,6 +88,12 @@ const SpecComponent = () => {
           </a>
         </div>
       </div>
+      <Web3ReactProvider>
+        <PurchaseModal
+          visible={showPurchaseModal}
+          handleClose={() => handleClosePurchaseModal()}
+        />
+      </Web3ReactProvider>
     </div>
   );
 };
