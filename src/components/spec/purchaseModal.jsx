@@ -5,6 +5,8 @@ import Web3 from '../../hooks/web3';
 
 import './purchaseModal.less';
 
+console.log('ConnectorNames', ConnectorNames);
+
 const PurchaseModal = (props) => {
   const { visible, handleClose } = props;
   const [purchaseNumber, setPurchaseNumber] = useState(1);
@@ -29,7 +31,7 @@ const PurchaseModal = (props) => {
   const { connect } = Web3.useContainer();
 
   const handleConnect = (connectorName) => {
-    connect(connectorName, onSuccess);
+    connect(connectorName);
   };
 
   return (
