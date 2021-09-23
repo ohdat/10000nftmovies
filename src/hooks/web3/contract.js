@@ -2,128 +2,63 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { toChecksumAddress } from 'ethereum-checksum-address';
 import { ethers } from 'ethers';
+import Decimal from 'decimal.js-light';
 import ABI from './abi.json';
 
-export class Contract {
-  constructor(address, ABI, provider) {
-    this.ABI = ABI;
-    this.address = address;
-    this.contract = new ethers.Contract(
-      toChecksumAddress(address),
-      ABI,
-      provider,
-    );
-  }
+// TODO: 合约地址和单价
+const CONTRACT_ADDRESS = '0xe5fdb9f1435daac09cce08ed070db52226ef3203';
+const PRICE = new Decimal('0.03');
 
-  _log(event, method, extraData = {}) {
-    console.groupCollapsed(`合约调用 - ${event} - ${method}`);
-    console.table({
-      合约地址: { value: this.address },
-      调用方法: { value: method },
-      ...extraData,
-    });
-    console.groupEnd();
-  }
-
-  _upsertTransaction(...args) {
-    if (window.__upsertTransaction__) {
-      window.__upsertTransaction__(...args);
-    }
-  }
-
-  call(method, args = []) {
-    return this.contract.methods[method](...args)
-      .call()
-      .then((data) => {
-        this._log('call', method, {
-          方法入参: { value: args },
-          结果: { value: data },
-        });
-        return data;
-      });
-  }
-
-  send(method, args = [], options = {}) {
-    return this.estimateGas(method, args, { ...options }).then(
-      (gas) =>
-        new Promise((resolve, reject) => {
-          this.contract.methods[method](...args)
-            .send({
-              gas,
-              ...options,
-            })
-            .on('transactionHash', (hash) => {
-              this._upsertTransaction(
-                {
-                  method,
-                  args,
-                  options,
-                },
-                hash,
-              );
-            })
-            // .on('confirmation', (confirmationNumber, receipt) => {
-            //   console.log(confirmationNumber, receipt);
-            // })
-            .on('receipt', (receipt) => {
-              this._log('send', method, {
-                方法入参: { value: args },
-                调用参数: { value: options },
-                结果: { value: receipt },
-              });
-              this._upsertTransaction(
-                {
-                  method,
-                  args,
-                  options,
-                },
-                receipt.transactionHash,
-                receipt,
-              );
-              resolve(receipt);
-            })
-            .on('error', (error, receipt) => {
-              reject(error);
-            });
-        }),
-    );
-  }
-
-  estimateGas(method, args = [], options = {}) {
-    return (
-      this.contract.methods[method](...args)
-        .estimateGas(options)
-        // gas多一点防止出问题
-        .then((gas) => {
-          this._log('estimateGas', method, {
-            方法入参: { value: args },
-            调用参数: { value: options },
-            预测gas: { value: gas },
-            调整gas: { value: parseInt(gas * 1.05, 10) },
-          });
-          return parseInt(gas * 1.05, 10);
-        })
-    );
-  }
-
-  getPastEvents(eventName, filter) {
-    return this.contract.getPastEvents(eventName, filter).then((data) => {
-      this._log('getPastEvents', eventName, {
-        过滤: { value: filter },
-        结果: { value: data },
-      });
-      return data;
-    });
-  }
-}
-
-const CONTRACT_ADDRESS = '0x000'; // 合约地址
-export default class TokenContract extends Contract {
+export default class TokenContract {
   constructor(provider) {
-    super(CONTRACT_ADDRESS, ABI, provider);
+    this.ABI = ABI;
+    this.address = CONTRACT_ADDRESS;
+    this.provider = provider;
+  }
+
+  getInstance() {
+    return new ethers.Contract(
+      toChecksumAddress(this.address),
+      this.ABI,
+      this.provider,
+    );
   }
 
   purchase(amount, options = {}) {
-    return this.send('purchase', [amount], options);
+    const contract = this.getInstance();
+    console.log(contract);
+    const web3 = contract.provider;
+    const account = options.from;
+    return web3.getBalance(account).then((balance) => {
+      if (PRICE.lt(balance.toString())) {
+        return Promise.all([
+          contract
+            .purchase(amount, {
+              value: ethers.utils.parseEther(PRICE.mul(amount).toString()),
+            })
+            .then((tx) => tx.wait()),
+          new Promise((resolve) => {
+            contract.once(
+              'PurchaseSuccessful',
+              (buyer, amount, totalPrice, nftTokenIds) => {
+                resolve({
+                  buyer,
+                  amount: amount.toString(),
+                  totalPrice: ethers.utils.formatEther(totalPrice.toString()),
+                  nftTokenIds: nftTokenIds.map((n) => n.toString()),
+                });
+              },
+            );
+          }),
+        ]).then(([tx, event]) => {
+          return {
+            success: tx.status === 1,
+            ...event,
+          };
+        });
+      } else {
+        throw new Error('insufficient funds');
+      }
+    });
   }
 }

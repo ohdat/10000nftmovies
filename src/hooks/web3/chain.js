@@ -1,4 +1,6 @@
-export const chainId = 1;
+export const chainId = 3;
+// TODO: 正式环境
+// export const chainId = 1;
 export const rpcUrls = [
   'https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
 ];

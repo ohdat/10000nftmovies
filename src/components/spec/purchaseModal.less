@@ -1,5 +1,8 @@
 .purchase-box {
   padding-top: 82px;
+  .purchase-txt {
+    text-align: center;
+  }
   .purchase-img {
     height: 350px;
     width: 350px;
@@ -9,8 +12,71 @@
       width: 100%;
     }
   }
+  .btn-box {
+    width: 100%;
+    padding-top: 8px;
+    padding-bottom: 48px;
+  }
   .purchase-btn {
     background-color: #000;
     color: #fff;
+    width: 400px;
+    height: 80px;
+    font-size: 32px;
+    font-weight: bold;
+    margin: 0 auto;
+    display: block;
+  }
+  .purchase-input {
+    margin-top: 42px;
+    width: 100%;
+    .input-wrapper {
+      width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      height: 64px;
+      line-height: 64px;
+      border: 1px solid #000;
+      .calcu-input {
+        height: 100%;
+        flex: 1;
+        border: none;
+        font-size: 24px;
+        color: #000;
+        text-align: center;
+      }
+      .calcu-btn {
+        width: 64px;
+        height: 100%;
+        flex-basis: 64px;
+        text-align: center;
+        img {
+          width: 24px;
+        }
+      }
+      .plus-icon {
+        border-left: 1px solid #000;
+      }
+      .minus-icon {
+        border-right: 1px solid #000;
+      }
+    }
+  }
+  .remain-amount {
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 40px;
+    margin-top: 16px;
+  }
+  .cost-amount {
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 32px;
+    margin-top: 24px;
+  }
+  .input-wrapper {
+    display: block;
   }
 }

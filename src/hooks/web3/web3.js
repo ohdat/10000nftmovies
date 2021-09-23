@@ -17,6 +17,7 @@ import {
 import { ethers } from 'ethers';
 import chainOption from './chain';
 import connectors, { connectorLocalStorageKey } from './connectors';
+import TokenContract, { Contract } from './contract';
 
 // TODO: toast error
 function toastError(...messages) {
@@ -120,7 +121,7 @@ function useWeb3() {
     (amount) => {
       if (!account) return;
       if (!library) return;
-      const contract = new TokenContract(library.provider);
+      const contract = new TokenContract(library.getSigner());
       return contract.purchase(amount, {
         from: account,
       });

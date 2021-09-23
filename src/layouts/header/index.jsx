@@ -70,7 +70,6 @@ const relateWebData = [
 
 const Header = () => {
   const { currentAccount, disconnect, connect } = Web3.useContainer();
-  console.log('currentAccount', currentAccount);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const handleShowMobileMenu = (e) => {
     setShowMobileMenu(!showMobileMenu);

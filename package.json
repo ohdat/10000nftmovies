@@ -25,6 +25,7 @@
     "@web3-react/core": "^6.1.9",
     "@web3-react/injected-connector": "^6.0.7",
     "@web3-react/walletconnect-connector": "^6.2.4",
+    "decimal.js-light": "2.5.1",
     "ethereum-checksum-address": "^0.0.7",
     "ethers": "^5.4.7",
     "jquery": "^3.6.0",
