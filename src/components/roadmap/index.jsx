@@ -15,7 +15,7 @@ const roadmapData = [
     key: '3',
   },
   {
-    desc: 'The community will begin voting on which movie should go into production. ',
+    desc: 'The community will begin voting on which movie should go into production. Each token can cast one vote. ',
     key: '4',
   },
   {

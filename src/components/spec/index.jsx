@@ -11,8 +11,9 @@ const SpecComponent = () => {
           <div className="btn-text">COMING SOON</div>
         </div>
         <div className="spec-text spec-intro">
-          <p>Whitelist: 7am EST 26th Sept. 0.02ETH each</p>
+          <p>Whitelist: 7am EST 24th Sept. 0.02ETH each</p>
           <p>General Entry: 9am EST 26th Sept. 0.02ETH each</p>
+          <p>Content Reveal: 7am EST 27th Sept.</p>
         </div>
         <div className="spec-text info-text">
           <p>
