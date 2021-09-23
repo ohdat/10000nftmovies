@@ -1,8 +1,12 @@
 import { NavLink } from 'umi';
 import React, { useState } from 'react';
+import { Button, message } from 'antd';
 import $ from 'jquery';
+import { ConnectorNames } from '../../hooks/web3/connectors';
+import Web3 from '../../hooks/web3';
 import 'jquery.scrollto';
 import './styles.less';
+
 const navArray = [
   {
     navkey: 'Spec',
@@ -65,6 +69,8 @@ const relateWebData = [
 ];
 
 const Header = () => {
+  const { currentAccount, disconnect, connect } = Web3.useContainer();
+  console.log('currentAccount', currentAccount);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const handleShowMobileMenu = (e) => {
     setShowMobileMenu(!showMobileMenu);
@@ -84,6 +90,15 @@ const Header = () => {
     if (location.pathname == '/' && id !== 'gallery') {
       // e.preventDefault();
       $.scrollTo(`.${id}-wrapper`, { offset: { top: -150 }, duration: 800 });
+    }
+  };
+  const handleConnect = (connectorName) => {
+    if (currentAccount) {
+      message.success('Disconnected Successfully');
+      disconnect(connectorName);
+    } else {
+      message.success('Connected Successfully');
+      connect(connectorName);
     }
   };
   return (
@@ -133,6 +148,18 @@ const Header = () => {
             </a>
           </div>
         ))}
+        <Button
+          className="connect-btn"
+          onClick={() => handleConnect(ConnectorNames.Injected)}
+        >
+          <span
+            className="connect-sign"
+            style={
+              currentAccount ? { background: 'green' } : { background: 'red' }
+            }
+          />
+          Wallet
+        </Button>
         <div className="mobile-icon" onClick={(e) => handleShowMobileMenu(e)}>
           {!showMobileMenu ? (
             <img src={require('../../assets/images/union.svg')} alt="" />

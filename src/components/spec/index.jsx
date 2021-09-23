@@ -1,8 +1,6 @@
-import { Web3ReactProvider } from '@web3-react/core';
 import React, { useState } from 'react';
 import PurchaseModal from './purchaseModal';
 import './styles.less';
-import Wallet from './wallet';
 
 const SpecComponent = () => {
   const [showPurchaseModal, setShowPurchaseModal] = useState(false);
