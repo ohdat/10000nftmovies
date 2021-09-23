@@ -40,6 +40,7 @@ export default class TokenContract {
             contract.once(
               'PurchaseSuccessful',
               (buyer, amount, totalPrice, nftTokenIds) => {
+                console.log(buyer, amount, totalPrice, nftTokenIds);
                 resolve({
                   buyer,
                   amount: amount.toString(),
@@ -50,6 +51,7 @@ export default class TokenContract {
             );
           }),
         ]).then(([tx, event]) => {
+          console.log(tx, event);
           return {
             success: tx.status === 1,
             ...event,

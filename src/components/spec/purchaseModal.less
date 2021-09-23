@@ -1,5 +1,16 @@
 .purchase-box {
   padding-top: 82px;
+  .sell-out {
+    width: 100%;
+    text-align: center;
+    padding-top: 42px;
+    padding-bottom: 48px;
+    p {
+      font-weight: normal;
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
   .purchase-txt {
     text-align: center;
   }
@@ -78,5 +89,61 @@
   }
   .input-wrapper {
     display: block;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .purchase-box {
+    padding-top: 41px;
+    .sell-out {
+      padding-top: 21px;
+      padding-bottom: 24px;
+      p {
+        font-weight: normal;
+        font-size: 24px;
+        line-height: 28px;
+      }
+    }
+    .purchase-img {
+      width: 240px;
+      height: 240px;
+    }
+    .btn-box {
+      padding-top: 4px;
+      padding-bottom: 24px;
+    }
+    .purchase-btn {
+      width: 200px;
+      height: 40px;
+      font-size: 16px;
+    }
+    .purchase-input {
+      margin-top: 21px;
+      .input-wrapper {
+        width: 300px;
+        height: 32px;
+        line-height: 32px;
+        .calcu-input {
+          font-size: 16px;
+        }
+        .calcu-btn {
+          width: 32px;
+          flex-basis: 32px;
+          img {
+            width: 16px;
+          }
+        }
+      }
+    }
+    .remain-amount {
+      font-size: 16px;
+      line-height: 24px;
+      margin-top: 8px;
+    }
+    .cost-amount {
+      font-size: 14px;
+      line-height: 24px;
+      margin-top: 12px;
+    }
   }
 }
