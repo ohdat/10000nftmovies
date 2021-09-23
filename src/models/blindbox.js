@@ -1,4 +1,7 @@
 import { getBlindboxInfo } from '../services/bindboxService';
+import Decimal from 'decimal.js-light';
+
+const rate = 0.000000001;
 
 export default {
   namespace: 'blindbox',
@@ -14,9 +17,19 @@ export default {
     },
   },
   effects: {
-    *getBlindboxInfo({}, { call }) {
+    *getBlindboxInfo({}, { call, put }) {
       const res = yield call(getBlindboxInfo);
-      console.log('res', res);
+      if (res.code === 200) {
+        const resPrice = res.data.price;
+        const price = new Decimal(resPrice).mul(rate).toFixed(2);
+        yield put({
+          type: 'updateState',
+          payload: {
+            costAmount: price,
+            remainAmount: res.data.stock,
+          },
+        });
+      }
     },
   },
   reducers: {

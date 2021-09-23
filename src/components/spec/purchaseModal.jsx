@@ -6,8 +6,6 @@ import Web3 from '../../hooks/web3';
 
 import './purchaseModal.less';
 
-console.log('ConnectorNames', ConnectorNames);
-
 const PurchaseModal = (props) => {
   const { visible, handleClose, cost, remain } = props;
   const [purchaseNumber, setPurchaseNumber] = useState(1);

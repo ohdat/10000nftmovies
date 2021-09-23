@@ -26,7 +26,6 @@ export default class TokenContract {
 
   purchase(amount, options = {}) {
     const contract = this.getInstance();
-    console.log(contract);
     const web3 = contract.provider;
     const account = options.from;
     return web3.getBalance(account).then((balance) => {
