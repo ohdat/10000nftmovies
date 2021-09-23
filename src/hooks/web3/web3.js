@@ -116,11 +116,24 @@ function useWeb3() {
     window.localStorage.removeItem(connectorLocalStorageKey);
   }, [deactivate]);
 
+  const purchase = useCallback(
+    (amount) => {
+      if (!account) return;
+      if (!library) return;
+      const contract = new TokenContract(library.provider);
+      return contract.purchase(amount, {
+        from: account,
+      });
+    },
+    [library, account],
+  );
+
   return {
     currentAccount: account,
     setupNetwork,
     connect,
     disconnect,
+    purchase,
   };
 }
 

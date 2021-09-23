@@ -117,14 +117,13 @@ export class Contract {
   }
 }
 
-const CONTRACT_ADDRESS = '0x000';
-
+const CONTRACT_ADDRESS = '0x000'; // 合约地址
 export default class TokenContract extends Contract {
   constructor(provider) {
     super(CONTRACT_ADDRESS, ABI, provider);
   }
 
-  purchase(amount) {
-    return this.send('purchase', [amount]);
+  purchase(amount, options = {}) {
+    return this.send('purchase', [amount], options);
   }
 }

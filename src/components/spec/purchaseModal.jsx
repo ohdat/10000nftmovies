@@ -10,7 +10,7 @@ console.log('ConnectorNames', ConnectorNames);
 const PurchaseModal = (props) => {
   const { visible, handleClose } = props;
   const [purchaseNumber, setPurchaseNumber] = useState(1);
-  const { currentAccount, disconnect } = Web3.useContainer();
+  const { currentAccount, disconnect, connect, purchase } = Web3.useContainer();
   const handleCancel = () => {
     handleClose();
   };
@@ -25,12 +25,11 @@ const PurchaseModal = (props) => {
     }
   };
 
-  const { connect } = Web3.useContainer();
-
   const handleConnect = (connectorName) => {
-    connect(connectorName);
     if (currentAccount) {
       console.log('currentAccount', currentAccount);
+    } else {
+      connect(connectorName);
     }
   };
 
