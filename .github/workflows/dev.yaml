@@ -3,7 +3,9 @@ name: dev
 on:
   push:
     branches:
+      - develop
       - 'refactor/pages'
+      - 'feature/add_wallet'
 
 jobs:
 

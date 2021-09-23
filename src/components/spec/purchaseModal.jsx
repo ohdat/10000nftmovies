@@ -41,11 +41,11 @@ const PurchaseModal = (props) => {
         })
         .catch((err) => {
           if (err.message.match(/insufficient funds/)) {
-            message.error('ETH余额不足');
+            message.error('Not enough ETH');
           }
         });
     } else {
-      message.error('请先连接钱包');
+      message.error('Please connect your ETH wallet');
     }
   };
 
@@ -93,7 +93,7 @@ const PurchaseModal = (props) => {
                     className="calcu-input"
                     value={purchaseNumber}
                     onChange={(e) => onChangePurchaseNumber(e)}
-                    placeholder="请输入购买数量"
+                    placeholder="Amount of purchase"
                     maxLength={25}
                   />
                   <div
