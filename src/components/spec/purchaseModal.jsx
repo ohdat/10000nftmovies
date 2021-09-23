@@ -6,6 +6,7 @@ import { connect } from 'umi';
 import Web3 from '../../hooks/web3';
 
 import './purchaseModal.less';
+import Decimal from 'decimal.js-light';
 
 const antIcon = (
   <LoadingOutlined style={{ fontSize: 48, color: '#000' }} spin />
@@ -26,6 +27,8 @@ const PurchaseModal = (props) => {
     const reg = /^-?\d*(\.\d*)?$/;
     if ((!isNaN(value) && reg.test(value)) || value === '' || value === '-') {
       setPurchaseNumber(parseInt(value));
+    } else if (value === '' || value === '-') {
+      setPurchaseNumber(parseInt(0));
     }
   };
 
@@ -53,8 +56,8 @@ const PurchaseModal = (props) => {
     const reg = /^-?\d*(\.\d*)?$/;
     if (!isNaN(purchaseNumber) && reg.test(purchaseNumber)) {
       const res = parseInt(purchaseNumber);
-      if (res <= 1) return;
-      if (res >= 100) return;
+      if (res <= 1 && sign === 'minus') return;
+      if (res >= 100 && sign === 'plus') return;
       if (sign === 'minus') {
         setPurchaseNumber(res - 1);
       }
@@ -64,6 +67,14 @@ const PurchaseModal = (props) => {
     }
   };
 
+  const handleCalcuCost = () => {
+    const reg = /^-?\d*(\.\d*)?$/;
+    if (!isNaN(purchaseNumber) && reg.test(purchaseNumber)) {
+      const res = new Decimal(purchaseNumber).mul(cost).toFixed(2);
+      return res;
+    }
+    return cost;
+  };
   return (
     <Modal
       title=""
@@ -108,7 +119,7 @@ const PurchaseModal = (props) => {
                 </div>
               </div>
               <div className="cost-amount purchase-txt">
-                Cost: {cost}&nbsp;ETH
+                Cost: {handleCalcuCost()}&nbsp;ETH
               </div>
               <div className="btn-box">
                 <Button
