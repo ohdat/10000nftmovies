@@ -64,13 +64,16 @@ function useWeb3() {
       return false;
     }
   }, []);
+  // const connectHandler = async (error) => {
 
+  // }
   const connect = useCallback(
-    (connectorName, onSuccess) => {
+    (connectorName, onSuccess, onError) => {
       const connector = connectors[connectorName];
       if (connector) {
+        let err;
         activate(connector, async (error) => {
-          console.log(error);
+          err = error;
           if (error instanceof UnsupportedChainIdError) {
             const hasSetup = await setupNetwork();
             if (hasSetup) {
@@ -83,6 +86,7 @@ function useWeb3() {
               error instanceof NoBscProviderError
             ) {
               toastError('Provider Error', 'No provider was found');
+              if (onError) onError('ProviderError');
             } else if (
               error instanceof UserRejectedRequestErrorInjected ||
               error instanceof UserRejectedRequestErrorWalletConnect
@@ -99,7 +103,9 @@ function useWeb3() {
               toastError(error.name, error.message);
             }
           }
-        }).then(onSuccess);
+        }).then(() => {
+          if (!err) onSuccess();
+        });
       } else {
         toastError('Unable to find connector', 'The connector config is wrong');
       }

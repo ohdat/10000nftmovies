@@ -97,7 +97,15 @@ const Header = () => {
         message.success('Disconnected Successfully'),
       );
     } else {
-      connect(connectorName, () => message.success('Connected Successfully'));
+      connect(
+        connectorName,
+        () => message.success('Connected Successfully'),
+        (err) => {
+          if (err == 'ProviderError') {
+            message.error('Connect failed');
+          }
+        },
+      );
     }
   };
 
