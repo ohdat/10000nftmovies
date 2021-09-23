@@ -93,13 +93,14 @@ const Header = () => {
   };
   const handleConnect = (connectorName) => {
     if (currentAccount) {
-      message.success('Disconnected Successfully');
-      disconnect(connectorName);
+      disconnect(connectorName, () =>
+        message.success('Disconnected Successfully'),
+      );
     } else {
-      message.success('Connected Successfully');
-      connect(connectorName);
+      connect(connectorName, () => message.success('Connected Successfully'));
     }
   };
+
   return (
     <div className="header-wrapper flex-box">
       <div className="header-left">
