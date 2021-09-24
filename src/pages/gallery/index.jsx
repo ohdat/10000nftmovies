@@ -3,7 +3,7 @@ import { useScrollToTop } from 'react-router-scroll-to-top';
 
 const GalleryPage = () => {
   useScrollToTop();
-  const boxArray = Array.from({ length: 50 }, (v, i) => i);
+  const boxArray = Array.from({ length: 62 }, (v, i) => i);
   return (
     <div className="page-container gallery-page">
       <div className="page-content">
