@@ -19,7 +19,7 @@ const antIcon = (
 );
 
 const PurchaseModal = (props) => {
-  const [purchaseLoading, setPurchaseLoading] = useState(false);
+  const [purchaseLoading, setPurchaseLoading] = useState(true);
   const { visible, handleClose, cost, remain, whiteList } = props;
   const [purchaseNumber, setPurchaseNumber] = useState(1);
   const { currentAccount, purchase } = Web3.useContainer();
@@ -45,7 +45,20 @@ const PurchaseModal = (props) => {
 
   const handlePurchase = () => {
     if (currentAccount) {
-      setPurchaseLoading(true);
+      if (whiteList.indexOf(currentAccount.toLowerCase()) === -1) {
+        message.error(
+          'You are not on the whitelist. Please contact us in our discord channel. Or you can join our general entry queue later.',
+        );
+        return;
+      }
+      setPurchaseLoading('callMetamask');
+      document.addEventListener(
+        'transaction',
+        (ev) => {
+          setPurchaseLoading('blockConfirming');
+        },
+        false,
+      );
       purchase(purchaseNumber)
         .then((res) => {
           if (res.success) {
@@ -108,7 +121,11 @@ const PurchaseModal = (props) => {
         maskStyle={{ background: 'rgba(255, 255, 255, 0.85)' }}
         width={'80%'}
       >
-        <Spin spinning={purchaseLoading} indicator={antIcon}>
+        <Spin
+          spinning={purchaseLoading}
+          indicator={antIcon}
+          tip={purchaseState[purchaseLoading]}
+        >
           <div className="purchase-box">
             <div className="purchase-img">
               <img src={require('../../assets/images/purchase.jpeg')} />

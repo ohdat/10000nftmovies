@@ -38,7 +38,8 @@ export default {
     *getWhiteList({}, { call, put }) {
       const res = yield call(getWhiteList);
       if (res.code === 200) {
-        const whiteList = res.data.white_list;
+        const whiteList = res.data.white_list.map((i) => i.toLowerCase());
+
         yield put({
           type: 'updateState',
           payload: {

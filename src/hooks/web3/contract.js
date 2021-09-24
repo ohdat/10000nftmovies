@@ -36,7 +36,12 @@ export default class TokenContract {
             .purchase(amount, {
               value: ethers.utils.parseEther(PRICE.mul(amount).toString()),
             })
-            .then((tx) => tx.wait()),
+            .then((tx) => {
+              const evt = document.createEvent('HTMLEvents');
+              evt.initEvent('transaction', false, false);
+              document.dispatchEvent(evt);
+              return tx.wait();
+            }),
           new Promise((resolve) => {
             contract.once(
               'PurchaseSuccessful',
