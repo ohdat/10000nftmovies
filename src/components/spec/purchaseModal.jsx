@@ -24,11 +24,15 @@ const PurchaseModal = (props) => {
 
   const onChangePurchaseNumber = (e) => {
     const { value } = e.target;
-    const reg = /^-?\d*(\.\d*)?$/;
-    if ((!isNaN(value) && reg.test(value)) || value === '' || value === '-') {
-      setPurchaseNumber(parseInt(value));
-    } else if (value === '' || value === '-') {
-      setPurchaseNumber(parseInt(0));
+    const reg = /^\d*(\.\d*)?$/;
+    if (!isNaN(value) && reg.test(value) && value !== '') {
+      if (parseInt(value) <= 100) {
+        setPurchaseNumber(parseInt(value));
+      } else if (parseInt(value) > 100) {
+        setPurchaseNumber(parseInt(100));
+      }
+    } else {
+      setPurchaseNumber(0);
     }
   };
 
@@ -43,9 +47,15 @@ const PurchaseModal = (props) => {
           }
         })
         .catch((err) => {
+          console.log('err', err);
           if (err.message.match(/insufficient funds/)) {
             setPurchaseLoading(false);
             message.error('Not enough ETH');
+          }
+          if (err.code === 4001) {
+            message.info('Minting Cancelled');
+            setPurchaseLoading(false);
+            handleClose();
           }
         });
     } else {
