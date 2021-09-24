@@ -1,4 +1,4 @@
-export const chainId = 3;
+export const chainId = 1;
 // TODO: 正式环境
 // export const chainId = 1;
 export const rpcUrls = [
