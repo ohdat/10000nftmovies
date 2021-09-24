@@ -4,6 +4,7 @@ import { Button, message } from 'antd';
 import $ from 'jquery';
 import { ConnectorNames } from '../../hooks/web3/connectors';
 import Web3 from '../../hooks/web3';
+import DownloadModal from './downloadModal';
 import 'jquery.scrollto';
 import './styles.less';
 
@@ -71,6 +72,7 @@ const relateWebData = [
 const Header = () => {
   const { currentAccount, disconnect, connect } = Web3.useContainer();
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [showDownLoad, setShowDownLoad] = useState(false);
   const handleShowMobileMenu = (e) => {
     setShowMobileMenu(!showMobileMenu);
     if (!showMobileMenu) {
@@ -102,6 +104,7 @@ const Header = () => {
         () => message.success('Connected Successfully'),
         (err) => {
           if (err == 'ProviderError') {
+            setShowDownLoad(true);
             message.error('Connect failed');
           }
         },
@@ -109,74 +112,82 @@ const Header = () => {
     }
   };
 
+  const handleCloseDownloadModal = () => setShowDownLoad(false);
+
   return (
-    <div className="header-wrapper flex-box">
-      <div className="header-left">
-        <NavLink to="/">
-          <img
-            className="logo"
-            src={require('../../assets/images/logo.svg')}
-            alt=""
-          />
-        </NavLink>
-        <div className="nav-wrapper">
-          <ul className="nav-box">
-            {navArray.map((item) => (
-              <li key={item.key} className="nav-item">
-                <a
-                  href={item.test}
-                  key={item.key}
-                  onClick={(e) => handleScroll(e, item.key)}
-                >
-                  {item.navkey}
-                </a>
-              </li>
-            ))}
-          </ul>
+    <>
+      <div className="header-wrapper flex-box">
+        <div className="header-left">
+          <NavLink to="/">
+            <img
+              className="logo"
+              src={require('../../assets/images/logo.svg')}
+              alt=""
+            />
+          </NavLink>
+          <div className="nav-wrapper">
+            <ul className="nav-box">
+              {navArray.map((item) => (
+                <li key={item.key} className="nav-item">
+                  <a
+                    href={item.test}
+                    key={item.key}
+                    onClick={(e) => handleScroll(e, item.key)}
+                  >
+                    {item.navkey}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-      </div>
-      {showMobileMenu && (
-        <div className="mobile-list">
-          {navArray.map((item) => (
-            <div
-              key={item.key}
-              className="mobile-item"
-              onClick={() => handleScroll(item.key)}
-            >
-              <a href={item.test}>{item.navkey}</a>
+        {showMobileMenu && (
+          <div className="mobile-list">
+            {navArray.map((item) => (
+              <div
+                key={item.key}
+                className="mobile-item"
+                onClick={() => handleScroll(item.key)}
+              >
+                <a href={item.test}>{item.navkey}</a>
+              </div>
+            ))}
+          </div>
+        )}
+        <div className="header-right account-box">
+          {relateWebData.map((item) => (
+            <div className="relateWeb-item" key={item.key}>
+              <a href={item.link} target="_blank">
+                <img src={item.imgUrl} alt="" />
+              </a>
             </div>
           ))}
-        </div>
-      )}
-      <div className="header-right account-box">
-        {relateWebData.map((item) => (
-          <div className="relateWeb-item" key={item.key}>
-            <a href={item.link} target="_blank">
-              <img src={item.imgUrl} alt="" />
-            </a>
+          <Button
+            className="connect-btn"
+            onClick={() => handleConnect(ConnectorNames.Injected)}
+          >
+            <span
+              className="connect-sign"
+              style={
+                currentAccount ? { background: 'green' } : { background: 'red' }
+              }
+            />
+            Wallet
+          </Button>
+          <div className="mobile-icon" onClick={(e) => handleShowMobileMenu(e)}>
+            {!showMobileMenu ? (
+              <img src={require('../../assets/images/union.svg')} alt="" />
+            ) : (
+              <img src={require('../../assets/images/close.svg')} alt="" />
+            )}
           </div>
-        ))}
-        <Button
-          className="connect-btn"
-          onClick={() => handleConnect(ConnectorNames.Injected)}
-        >
-          <span
-            className="connect-sign"
-            style={
-              currentAccount ? { background: 'green' } : { background: 'red' }
-            }
-          />
-          Wallet
-        </Button>
-        <div className="mobile-icon" onClick={(e) => handleShowMobileMenu(e)}>
-          {!showMobileMenu ? (
-            <img src={require('../../assets/images/union.svg')} alt="" />
-          ) : (
-            <img src={require('../../assets/images/close.svg')} alt="" />
-          )}
         </div>
       </div>
-    </div>
+      <DownloadModal
+        visible={showDownLoad}
+        handleClose={() => handleCloseDownloadModal()}
+      />
+    </>
   );
 };
 

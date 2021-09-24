@@ -5,3 +5,9 @@ export async function getBlindboxInfo() {
     method: 'GET',
   });
 }
+
+export async function getWhiteList() {
+  return request('https://item.dev.xxjio.com/v2/nft_movie/white_list', {
+    method: 'GET',
+  });
+}
