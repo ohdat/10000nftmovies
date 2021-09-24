@@ -29,6 +29,7 @@ export default class TokenContract {
     const web3 = contract.provider;
     const account = options.from;
     return web3.getBalance(account).then((balance) => {
+      console.log('唤起小狐狸成功 但是尚未开始购买');
       if (PRICE.lt(balance.toString())) {
         return Promise.all([
           contract
@@ -40,7 +41,6 @@ export default class TokenContract {
             contract.once(
               'PurchaseSuccessful',
               (buyer, amount, totalPrice, nftTokenIds) => {
-                console.log(buyer, amount, totalPrice, nftTokenIds);
                 resolve({
                   buyer,
                   amount: amount.toString(),
@@ -51,7 +51,6 @@ export default class TokenContract {
             );
           }),
         ]).then(([tx, event]) => {
-          console.log(tx, event);
           return {
             success: tx.status === 1,
             ...event,

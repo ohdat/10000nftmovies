@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import { Modal, Input, Button, message } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
+import PurchaseSuccessModal from './purchaseSuccessModal';
 import { Spin } from 'antd';
 import { connect } from 'umi';
 import Web3 from '../../hooks/web3';
 
 import './purchaseModal.less';
 import Decimal from 'decimal.js-light';
+
+const purchaseState = {
+  callMetamask: 'Comfirming...',
+  blockConfirming: 'Waiting for blockchain confirmation...',
+};
 
 const antIcon = (
   <LoadingOutlined style={{ fontSize: 48, color: '#000' }} spin />
@@ -17,6 +23,7 @@ const PurchaseModal = (props) => {
   const { visible, handleClose, cost, remain, whiteList } = props;
   const [purchaseNumber, setPurchaseNumber] = useState(1);
   const { currentAccount, purchase } = Web3.useContainer();
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const handleCancel = () => {
     handleClose();
@@ -43,11 +50,11 @@ const PurchaseModal = (props) => {
         .then((res) => {
           if (res.success) {
             setPurchaseLoading(false);
+            setShowSuccessModal(true);
             message.success('Purchase succcessufully');
           }
         })
         .catch((err) => {
-          console.log('err', err);
           if (err.message.match(/insufficient funds/)) {
             setPurchaseLoading(false);
             message.error('Not enough ETH');
@@ -86,73 +93,88 @@ const PurchaseModal = (props) => {
     }
     return cost;
   };
+
+  const handleCloseSuccessModal = () => {
+    setShowSuccessModal(false);
+    handleClose();
+  };
   return (
-    <Modal
-      title=""
-      visible={visible}
-      onCancel={handleCancel}
-      footer={null}
-      maskStyle={{ background: 'rgba(255, 255, 255, 0.85)' }}
-      width={'80%'}
-    >
-      <Spin spinning={purchaseLoading} indicator={antIcon}>
-        <div className="purchase-box">
-          <div className="purchase-img">
-            <img src={require('../../assets/images/purchase.jpeg')} />
-          </div>
-          <div className="remain-amount purchase-txt">{remain} Remains</div>
-          {remain > 0 ? (
-            <div className="purchase-wrapper">
-              <div className="purchase-input">
-                <div className="input-wrapper">
-                  <div
-                    className="plus-icon calcu-btn"
-                    onClick={() => handleCalcu('plus')}
-                  >
-                    <img src={require('../../assets/images/plus.png')} alt="" />
-                  </div>
-                  <Input
-                    className="calcu-input"
-                    value={purchaseNumber}
-                    onChange={(e) => onChangePurchaseNumber(e)}
-                    placeholder="Amount of purchase"
-                    maxLength={25}
-                  />
-                  <div
-                    className="minus-icon calcu-btn"
-                    onClick={() => handleCalcu('minus')}
-                  >
-                    <img
-                      src={require('../../assets/images/minus.png')}
-                      alt=""
+    <>
+      <Modal
+        title=""
+        visible={visible}
+        onCancel={handleCancel}
+        footer={null}
+        maskStyle={{ background: 'rgba(255, 255, 255, 0.85)' }}
+        width={'80%'}
+      >
+        <Spin spinning={purchaseLoading} indicator={antIcon}>
+          <div className="purchase-box">
+            <div className="purchase-img">
+              <img src={require('../../assets/images/purchase.jpeg')} />
+            </div>
+            <div className="remain-amount purchase-txt">{remain} Remains</div>
+            {remain > 0 ? (
+              <div className="purchase-wrapper">
+                <div className="purchase-input">
+                  <div className="input-wrapper">
+                    <div
+                      className="plus-icon calcu-btn"
+                      onClick={() => handleCalcu('plus')}
+                    >
+                      <img
+                        src={require('../../assets/images/plus.png')}
+                        alt=""
+                      />
+                    </div>
+                    <Input
+                      className="calcu-input"
+                      value={purchaseNumber}
+                      onChange={(e) => onChangePurchaseNumber(e)}
+                      placeholder="Amount of purchase"
+                      maxLength={25}
                     />
+                    <div
+                      className="minus-icon calcu-btn"
+                      onClick={() => handleCalcu('minus')}
+                    >
+                      <img
+                        src={require('../../assets/images/minus.png')}
+                        alt=""
+                      />
+                    </div>
                   </div>
                 </div>
+                <div className="cost-amount purchase-txt">
+                  Cost: {handleCalcuCost()}&nbsp;ETH
+                </div>
+                <div className="btn-box">
+                  <Button
+                    className="purchase-btn"
+                    onClick={() => handlePurchase()}
+                  >
+                    MINT
+                  </Button>
+                </div>
               </div>
-              <div className="cost-amount purchase-txt">
-                Cost: {handleCalcuCost()}&nbsp;ETH
+            ) : (
+              <div className="sell-out">
+                <p>
+                  Sold out today！
+                  <br />
+                  Come back and try tomorrow！
+                </p>
               </div>
-              <div className="btn-box">
-                <Button
-                  className="purchase-btn"
-                  onClick={() => handlePurchase()}
-                >
-                  MINT
-                </Button>
-              </div>
-            </div>
-          ) : (
-            <div className="sell-out">
-              <p>
-                Sold out today！
-                <br />
-                Come back and try tomorrow！
-              </p>
-            </div>
-          )}
-        </div>
-      </Spin>
-    </Modal>
+            )}
+          </div>
+        </Spin>
+      </Modal>
+      <PurchaseSuccessModal
+        visible={showSuccessModal}
+        handleClose={() => handleCloseSuccessModal()}
+        amount={purchaseNumber}
+      />
+    </>
   );
 };
 
