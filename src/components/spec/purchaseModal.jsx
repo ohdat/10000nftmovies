@@ -19,7 +19,7 @@ const antIcon = (
 );
 
 const PurchaseModal = (props) => {
-  const [purchaseLoading, setPurchaseLoading] = useState(true);
+  const [purchaseLoading, setPurchaseLoading] = useState(false);
   const { visible, handleClose, cost, remain, whiteList } = props;
   const [purchaseNumber, setPurchaseNumber] = useState(1);
   const { currentAccount, purchase } = Web3.useContainer();
@@ -39,7 +39,7 @@ const PurchaseModal = (props) => {
         setPurchaseNumber(parseInt(100));
       }
     } else {
-      setPurchaseNumber(0);
+      setPurchaseNumber(1);
     }
   };
 
@@ -65,6 +65,9 @@ const PurchaseModal = (props) => {
             setPurchaseLoading(false);
             setShowSuccessModal(true);
             message.success('Purchase succcessufully');
+            props.dispatch({
+              type: 'blindbox/getBlindboxInfo',
+            });
           }
         })
         .catch((err) => {
@@ -111,6 +114,7 @@ const PurchaseModal = (props) => {
     setShowSuccessModal(false);
     handleClose();
   };
+  const _purchaseNumber = parseInt(purchaseNumber);
   return (
     <>
       <Modal
@@ -124,6 +128,7 @@ const PurchaseModal = (props) => {
         <Spin
           spinning={purchaseLoading}
           indicator={antIcon}
+          wrapperClassName="loading-box"
           tip={purchaseState[purchaseLoading]}
         >
           <div className="purchase-box">
@@ -169,6 +174,9 @@ const PurchaseModal = (props) => {
                   <Button
                     className="purchase-btn"
                     onClick={() => handlePurchase()}
+                    disabled={
+                      _purchaseNumber < 1 || _purchaseNumber > parseInt(remain)
+                    }
                   >
                     MINT
                   </Button>

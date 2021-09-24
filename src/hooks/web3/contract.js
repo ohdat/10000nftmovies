@@ -6,7 +6,7 @@ import Decimal from 'decimal.js-light';
 import ABI from './abi.json';
 
 // TODO: 合约地址和单价
-const CONTRACT_ADDRESS = '0xe5fdb9f1435daac09cce08ed070db52226ef3203';
+const CONTRACT_ADDRESS = '0xF6CD2E4681c885295353A4Baa9d935Bf9837e9D1';
 const PRICE = new Decimal('0.03');
 
 export default class TokenContract {
@@ -29,7 +29,6 @@ export default class TokenContract {
     const web3 = contract.provider;
     const account = options.from;
     return web3.getBalance(account).then((balance) => {
-      console.log('唤起小狐狸成功 但是尚未开始购买');
       if (PRICE.lt(balance.toString())) {
         return Promise.all([
           contract

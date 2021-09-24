@@ -21,7 +21,11 @@ const DownloadModal = (props) => {
           <img src={require('../../assets/images/mmlogo.png')} alt="" />
         </div>
         <div className="link-box">
-          <a className="download-link" href="https://metamask.io/">
+          <a
+            className="download-link"
+            href="https://metamask.io/"
+            target="_blank"
+          >
             Download
           </a>
         </div>

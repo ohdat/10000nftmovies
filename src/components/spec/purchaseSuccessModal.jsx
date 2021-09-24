@@ -28,6 +28,7 @@ const PurchaseSuccessModal = (props) => {
           <a
             className="link"
             href="https://opensea.io/collection/10000moviesaboutsam"
+            target="_blank"
           >
             GO OPENSEA
           </a>
