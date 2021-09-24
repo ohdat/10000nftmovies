@@ -14,7 +14,7 @@ const antIcon = (
 
 const PurchaseModal = (props) => {
   const [purchaseLoading, setPurchaseLoading] = useState(false);
-  const { visible, handleClose, cost, remain } = props;
+  const { visible, handleClose, cost, remain, whiteList } = props;
   const [purchaseNumber, setPurchaseNumber] = useState(1);
   const { currentAccount, purchase } = Web3.useContainer();
 
@@ -159,4 +159,5 @@ const PurchaseModal = (props) => {
 export default connect(({ blindbox }) => ({
   cost: blindbox.costAmount,
   remain: blindbox.remainAmount,
+  whiteList: blindbox.whiteList,
 }))(PurchaseModal);
