@@ -10,7 +10,7 @@ import './purchaseModal.less';
 import Decimal from 'decimal.js-light';
 
 const purchaseState = {
-  callMetamask: 'Comfirming...',
+  callMetamask: 'Confirming...',
   blockConfirming: 'Waiting for blockchain confirmation...',
 };
 
@@ -184,11 +184,7 @@ const PurchaseModal = (props) => {
               </div>
             ) : (
               <div className="sell-out">
-                <p>
-                  Sold out today！
-                  <br />
-                  Come back and try tomorrow！
-                </p>
+                <p>Sold out</p>
               </div>
             )}
           </div>

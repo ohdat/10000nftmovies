@@ -6,8 +6,8 @@ import Decimal from 'decimal.js-light';
 import ABI from './abi.json';
 
 // TODO: 合约地址和单价
-const CONTRACT_ADDRESS = '0xF6CD2E4681c885295353A4Baa9d935Bf9837e9D1';
-const PRICE = new Decimal('0.03');
+const CONTRACT_ADDRESS = '0xb484BE04033C37d45230e6006A505B159739Bf85';
+const PRICE = new Decimal('0.02');
 
 export default class TokenContract {
   constructor(provider) {
