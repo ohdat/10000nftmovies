@@ -44,6 +44,7 @@ const PurchaseModal = (props) => {
         })
         .catch((err) => {
           if (err.message.match(/insufficient funds/)) {
+            setPurchaseLoading(false);
             message.error('Not enough ETH');
           }
         });
