@@ -45,12 +45,12 @@ const PurchaseModal = (props) => {
 
   const handlePurchase = () => {
     if (currentAccount) {
-      if (whiteList.indexOf(currentAccount.toLowerCase()) === -1) {
-        message.error(
-          'You are not on the whitelist. Please contact us in our discord channel. Or you can join our general entry queue later.',
-        );
-        return;
-      }
+      // if (whiteList.indexOf(currentAccount.toLowerCase()) === -1) {
+      //   message.error(
+      //     'You are not on the whitelist. Please contact us in our discord channel. Or you can join our general entry queue later.',
+      //   );
+      //   return;
+      // }
       setPurchaseLoading('callMetamask');
       document.addEventListener(
         'transaction',
