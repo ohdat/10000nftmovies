@@ -19,7 +19,7 @@ const PurchaseSuccessModal = (props) => {
         </div>
         <div className="success-desc">
           <h1>Your transaction succeeded!</h1>
-          <p>You already buy {amount} nft</p>
+          <p>You already bought {amount} NFT</p>
         </div>
         <div className="success-btn-box">
           <Button className="btn" onClick={() => handleClose()}>
@@ -30,7 +30,7 @@ const PurchaseSuccessModal = (props) => {
             href="https://opensea.io/collection/10000moviesaboutsam"
             target="_blank"
           >
-            GO OPENSEA
+            Go to opensea
           </a>
         </div>
       </div>
