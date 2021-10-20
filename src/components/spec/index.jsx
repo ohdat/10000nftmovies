@@ -19,10 +19,18 @@ const SpecComponent = () => {
           <h1>10000 MOVIES ABOUT SAM.</h1>
         </div>
         <div className="spec-btn">
-          <div className="btn-text" onClick={() => handleShowPurchaseModal()}>
+          {/* <div className="btn-text" onClick={() => handleShowPurchaseModal()}>
             MINT NOW
-          </div>
+          </div> */}
+          <a
+            className="btn-text"
+            href="https://discord.gg/f6Fgys3kQk"
+            target="_blank"
+          >
+            Join Discord
+          </a>
         </div>
+
         <div className="spec-text spec-intro">
           <p>Whitelist: 7am EST 24th Sept. 0.02ETH each</p>
           <p>General Entry: 9am EST 26th Sept. 0.02ETH each</p>

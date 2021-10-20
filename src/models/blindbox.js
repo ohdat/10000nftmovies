@@ -23,7 +23,6 @@ export default {
   effects: {
     *getBlindboxInfo({}, { call, put }) {
       const res = yield call(getBlindboxInfo);
-      console.log('获取接口');
       if (res.code === 200) {
         const resPrice = res.data.price;
         const price = new Decimal(resPrice).mul(rate).toFixed(2);
